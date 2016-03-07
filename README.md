@@ -1,6 +1,6 @@
 # Mood Tracker
 
-This is the mood tracker app that will be submitted as a prototype for Computer Science 320 at UMass Amherst, in the Spring semester 2016. 
+This is the mood tracker app that will be submitted as a prototype for Computer Science 330 at UMass Amherst, in the Spring semester 2016. 
 
 To set up this app, you will need to do a few things. First, you will need to install some components in order for the app to run on your machine. You will need:
 
