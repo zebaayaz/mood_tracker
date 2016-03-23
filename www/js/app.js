@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       url: '/moods',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html',
+          templateUrl: 'templates/moods.html',
           controller: 'MoodController'
         }
       }
@@ -55,7 +55,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: '/behaviors',
     views: {
       'menuContent': {
-        templateUrl: 'templates/browse.html',
+        templateUrl: 'templates/behaviors.html',
         controller: 'MoodController'
       }
     }
@@ -64,7 +64,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: '/triggers',
     views: {
       'menuContent': {
-        templateUrl: 'templates/browse.html',
+        templateUrl: 'templates/triggers.html',
         controller: 'MoodController'
       }
     }
@@ -74,7 +74,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: '/beliefs',
     views: {
       'menuContent': {
-        templateUrl: 'templates/browse.html',
+        templateUrl: 'templates/beliefs.html',
         controller: 'MoodController'
       }
     }
