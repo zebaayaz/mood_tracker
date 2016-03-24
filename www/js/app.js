@@ -4,7 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
+angular.module('mood_tracker.controllers', []);
+
+angular.module('mood_tracker', ['ionic', 'mood_tracker.controllers', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -29,7 +31,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    controller: 'AppController'
   })
 
   .state('app.search', {
@@ -56,7 +58,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     views: {
       'menuContent': {
         templateUrl: 'templates/behaviors.html',
-        controller: 'MoodController'
+        controller: 'BehaviorController'
       }
     }
   })
@@ -65,7 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     views: {
       'menuContent': {
         templateUrl: 'templates/triggers.html',
-        controller: 'MoodController'
+        controller: 'TriggerController'
       }
     }
   })
@@ -75,7 +77,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     views: {
       'menuContent': {
         templateUrl: 'templates/beliefs.html',
-        controller: 'MoodController'
+        controller: 'BeliefController'
       }
     }
   });
