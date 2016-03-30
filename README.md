@@ -44,3 +44,5 @@ Also, here are some great tutorials on how to use Ionic. It is a great framework
 http://ionicframework.com/docs/overview/
 
 Any of those tutorials will be helpful when trying to learn the basics of Ionic/Angular.
+
+This is a test commit

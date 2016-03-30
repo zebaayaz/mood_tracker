@@ -7,6 +7,3 @@ angular.module('mood_tracker.controllers', []).controller('AppController', funct
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 });
-
-.controller('MoodController', function($scope, $stateParams) {
-});
