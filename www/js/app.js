@@ -62,6 +62,7 @@ angular.module('mood_tracker', ['ionic', 'mood_tracker.controllers', 'ngCordova'
       }
     }
   })
+
   .state('app.triggers', {
     url: '/triggers',
     views: {
@@ -78,6 +79,16 @@ angular.module('mood_tracker', ['ionic', 'mood_tracker.controllers', 'ngCordova'
       'menuContent': {
         templateUrl: 'templates/beliefs.html',
         controller: 'BeliefController'
+      }
+    }
+  })
+
+  .state('app.settings', {
+    url: '/settings',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/settings.html',
+        controller: 'SettingsController'
       }
     }
   });
