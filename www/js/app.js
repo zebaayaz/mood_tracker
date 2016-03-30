@@ -47,7 +47,7 @@ angular.module('mood_tracker', ['ionic', 'mood_tracker.controllers', 'ngCordova'
       url: '/moods',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html',
+          templateUrl: 'templates/moods.html',
           controller: 'MoodController'
         }
       }
@@ -57,16 +57,17 @@ angular.module('mood_tracker', ['ionic', 'mood_tracker.controllers', 'ngCordova'
     url: '/behaviors',
     views: {
       'menuContent': {
-        templateUrl: 'templates/browse.html',
+        templateUrl: 'templates/behaviors.html',
         controller: 'BehaviorController'
       }
     }
   })
+
   .state('app.triggers', {
     url: '/triggers',
     views: {
       'menuContent': {
-        templateUrl: 'templates/browse.html',
+        templateUrl: 'templates/triggers.html',
         controller: 'TriggerController'
       }
     }
@@ -76,8 +77,18 @@ angular.module('mood_tracker', ['ionic', 'mood_tracker.controllers', 'ngCordova'
     url: '/beliefs',
     views: {
       'menuContent': {
-        templateUrl: 'templates/browse.html',
+        templateUrl: 'templates/beliefs.html',
         controller: 'BeliefController'
+      }
+    }
+  })
+
+  .state('app.settings', {
+    url: '/settings',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/settings.html',
+        controller: 'SettingsController'
       }
     }
   });
