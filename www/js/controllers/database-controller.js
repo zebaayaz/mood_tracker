@@ -1,4 +1,4 @@
-module.controller('MyCtrl', function($scope, $cordovaSQLite) {
+module.controller('DatabaseController', function($scope, $cordovaSQLite) {
 
   // SQLite database used for application
   // plugin is from ngCordova : https://github.com/litehelpers/Cordova-sqlite-storage.git
