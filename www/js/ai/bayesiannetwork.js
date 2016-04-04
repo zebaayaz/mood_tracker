@@ -13,11 +13,11 @@ function extractWords(words){
   return wordlist;
 }
 
-function inputData(mood, triggerword, beliefword){
+function inputData(mood, triggerword, behaviorword){
   triggers[triggerword]++;
   moods[mood]++;
-  beliefs[beliefword]++;
+  behaviors[behaviorword]++;
 
-  behaviorsGivenMood[behavior][mood]++;
+  behaviorsGivenMood[behaviorword][mood]++;
   moodsGivenTrigger[mood][triggerword]++;
 }
