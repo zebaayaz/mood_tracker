@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('mood_tracker.controllers', []);
 
-angular.module('mood_tracker', ['ionic', 'mood_tracker.controllers', 'ngCordova'])
+angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -34,51 +34,42 @@ angular.module('mood_tracker', ['ionic', 'mood_tracker.controllers', 'ngCordova'
     controller: 'AppController'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.home', {
+    url: '/home',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/home.html',
+        controller: 'homeController'
       }
     }
   })
 
-  .state('app.moods', {
-      url: '/moods',
+  .state('app.history', {
+      url: '/history',
       views: {
         'menuContent': {
-          templateUrl: 'templates/moods.html',
-          controller: 'MoodController'
+          templateUrl: 'templates/history.html',
+          controller: 'historyController'
         }
       }
     })
 
-  .state('app.behaviors', {
-    url: '/behaviors',
+  .state('app.analyze', {
+    url: '/analyze',
     views: {
       'menuContent': {
-        templateUrl: 'templates/behaviors.html',
-        controller: 'BehaviorController'
+        templateUrl: 'templates/analyze.html',
+        controller: 'analyzeController'
       }
     }
   })
 
-  .state('app.triggers', {
-    url: '/triggers',
+  .state('app.help', {
+    url: '/help',
     views: {
       'menuContent': {
-        templateUrl: 'templates/triggers.html',
-        controller: 'TriggerController'
-      }
-    }
-  })
-
-  .state('app.beliefs', {
-    url: '/beliefs',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/beliefs.html',
-        controller: 'BeliefController'
+        templateUrl: 'templates/help.html',
+        controller: 'helpController'
       }
     }
   })
@@ -88,10 +79,10 @@ angular.module('mood_tracker', ['ionic', 'mood_tracker.controllers', 'ngCordova'
     views: {
       'menuContent': {
         templateUrl: 'templates/settings.html',
-        controller: 'SettingsController'
+        controller: 'settingsController'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/search');
+  $urlRouterProvider.otherwise('/app/home');
 });
