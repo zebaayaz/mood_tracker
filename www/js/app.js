@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('mood_tracker.controllers', []);
 
-angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'])
+angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers', 'ngChartist'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
