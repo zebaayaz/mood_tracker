@@ -1,3 +1,3 @@
-angular.module('mood_tracker.controllers').controller('SettingsController', function($scope, $stateParams) {
+angular.module('mood_tracker.controllers').controller('settingsController', function($scope, $stateParams) {
 
 });
