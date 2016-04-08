@@ -79,7 +79,8 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 		myPopup.then(function(response){
 			if(saved){
 				$scope.$eval(array).push(response);
-				$scope.newestMood = response;
+				
+				if(inputName == "Mood"){ $scope.newestMood = response; }
 			}
 		}); 
 	}
