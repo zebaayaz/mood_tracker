@@ -82,6 +82,16 @@ angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'
         controller: 'settingsController'
       }
     }
+  })
+
+  .state('app.mood_input', {
+    url: '/mood_input',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/mood_input.html',
+        controller: 'mood_inputController'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');

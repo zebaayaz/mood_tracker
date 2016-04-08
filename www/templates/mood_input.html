@@ -1,0 +1,124 @@
+<ion-view view-title="Mood Input">
+  <ion-content>
+    <div class="card">
+  		<div class="item item-divider">
+    		Mood
+  		</div>
+
+  		<div class="item item-text-wrap">
+			<label class="item item-input item-select">
+			   	<div class="input-label">
+			      	Select Mood:
+			   	</div>
+
+			   	<select>
+			    	<option ng-repeat="mood in moods" ng-selected="mood == newestMood">{{mood}}</option>
+			   	</select>
+			</label>
+
+			<div class="row">
+				<div class="col" style="margin-top: 10px; margin-left: 6px;"> 
+					Select Intensity:
+				</div>
+
+				<div class="col col-75" style="margin-left: 40px; margin-right: 40px">
+					<div class="item range">
+						<i class="icon ion-android-sad"></i>
+						  <input type="range" ng-model="moodScore" min="1" max="10">
+						  <i class="icon ion-android-happy"></i>
+					  </div>
+				</div>
+
+				  <div class="col">
+				  	<button class="button button-clear button-dark">{{moodScore}}</button>
+				  </div>
+			</div>
+
+  			<button class="button button-stable" ng-click="popUp('Mood', 'moods')">
+  				Add Custom Mood
+			</button>
+
+		    <button class="button button-clear button-positive" ng-click="next()" ng-show="buttons[0]">
+		        Next
+		    </button>
+
+  		</div>
+	</div>
+
+	<div class="card" ng-show="show[0]">
+  		<div class="item item-divider">
+    		Triggers
+  		</div>
+
+  		<div class="item item-text-wrap">
+
+  			<ul class="list">
+			    <li class="item item-icon-right" ng-repeat="trigger in triggers">
+			    	<p ng-click="edit(trigger, 'triggers')">"{{trigger}}"</p>
+			    	<button class="button button-icon icon ion-minus-circled" ng-click="remove(trigger, 'triggers')"></button>
+			    </li>
+			</ul>
+
+  			<button class="button button-stable" ng-click="popUp('Trigger', 'triggers')">
+  				Add New Trigger
+			</button>
+
+		    <button class="button button-clear button-positive" ng-click="next()" ng-show="buttons[1]">
+		        Next
+		    </button>
+
+  		</div>
+	</div>
+
+	<div class="card" ng-show="show[1]">
+  		<div class="item item-divider">
+    		Beliefs
+  		</div>
+
+  		<div class="item item-text-wrap">
+
+  			<ul class="list">
+			    <li class="item item-icon-right" ng-repeat="belief in beliefs">
+			    	<p ng-click="edit(belief, 'beliefs')">"{{belief}}"</p>
+			    	<button class="button button-icon icon ion-minus-circled" ng-click="remove(belief, 'beliefs')"></button>
+			    </li>
+			</ul>
+
+  			<button class="button button-stable" ng-click="popUp('Belief', 'beliefs')">
+  				Add New Belief
+			</button>
+
+		    <button class="button button-clear button-positive" ng-click="next()" ng-show="buttons[2]">
+		        Next
+		    </button>
+
+  		</div>
+	</div>
+
+	<div class="card" ng-show="show[2]">
+  		<div class="item item-divider">
+    		Behaviors
+  		</div>
+
+  		<div class="item item-text-wrap">
+
+  			<ul class="list">
+			    <li class="item item-icon-right" ng-repeat="behavior in behaviors">
+			    	<p ng-click="edit(behavior, 'behaviors')">"{{behavior}}"</p>
+			    	<button class="button button-icon icon ion-minus-circled" ng-click="remove(behavior, 'behaviors')"></button>
+			    </li>
+			</ul>
+
+  			<button class="button button-stable" ng-click="popUp('Behavior', 'behaviors')">
+  				Add New Behavior
+			</button>
+
+		    <button class="button button-clear button-positive" ng-click="submit()">
+		        Submit
+		    </button>
+
+  		</div>
+	</div>
+
+  </ion-content>
+</ion-view>
