@@ -52,6 +52,8 @@
 
   		<div class="item item-text-wrap">
 
+  			<div ng-show="triggers.length == 0">{{prompt}}</div>
+
   			<ul class="list">
 			    <li class="item item-icon-right" ng-repeat="trigger in triggers">
 			    	<p ng-click="edit(trigger, 'triggers')">"{{trigger}}"</p>
@@ -77,6 +79,8 @@
 
   		<div class="item item-text-wrap">
 
+  			<div ng-show="beliefs.length == 0">{{prompt}}</div>
+
   			<ul class="list">
 			    <li class="item item-icon-right" ng-repeat="belief in beliefs">
 			    	<p ng-click="edit(belief, 'beliefs')">"{{belief}}"</p>
@@ -101,6 +105,7 @@
   		</div>
 
   		<div class="item item-text-wrap">
+  			<div ng-show="behaviors.length == 0">{{prompt}}</div>
 
   			<ul class="list">
 			    <li class="item item-icon-right" ng-repeat="behavior in behaviors">

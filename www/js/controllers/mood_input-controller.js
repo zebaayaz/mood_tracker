@@ -11,6 +11,7 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 	$scope.position = 0;
 	$scope.show = [false, false, false, false];
 	$scope.buttons = [true, false, false, false];
+	$scope.prompt = "Please provide an input.";
 
 	$scope.edit = function(itemToEdit, array){
 
