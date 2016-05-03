@@ -1,5 +1,12 @@
-angular.module('mood_tracker.controllers').controller('mood_inputController', function($scope, $stateParams, $ionicPopup, $location) {
-
+angular.module('mood_tracker.controllers').controller('mood_inputController', function($scope,$window, $stateParams, $ionicPopup, $location) {
+	//get theme color
+	$scope.appTheme = 'positive';
+  var selectedTheme = $window.localStorage.appTheme;
+    if (selectedTheme) {
+        $scope.appTheme = selectedTheme;
+    } else {
+        $scope.appTheme = 'positive';
+    }
 	//main data arrays
 	$scope.moods = ["Happy", "Sad", "Hungry"];
 	$scope.moodScore = 5;
@@ -68,8 +75,8 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 		        	}
 		        	else{
 		        		saved = true;
-		        		
-		        		//return input as promise 
+
+		        		//return input as promise
 		        		return $scope.data.input;
 		        	}
 		        }
@@ -80,19 +87,19 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 		myPopup.then(function(response){
 			if(saved){
 				$scope.$eval(array).push(response);
-				
+
 				if(inputName == "Mood"){ $scope.newestMood = response; }
 			}
-		}); 
+		});
 	}
 
 	//keeps track of which next button should be visible
 	$scope.next = function(){
 		$scope.show[$scope.position] = true;
-		$scope.buttons[$scope.position] = false;		
-		
+		$scope.buttons[$scope.position] = false;
+
 		$scope.position++;
-		$scope.buttons[$scope.position] = true;		
+		$scope.buttons[$scope.position] = true;
 	};
 
 	$scope.submit = function(){

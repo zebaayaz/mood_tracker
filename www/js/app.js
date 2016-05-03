@@ -92,7 +92,21 @@ angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'
         controller: 'mood_inputController'
       }
     }
+  })
+
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    controller: 'userController'
+  })
+
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'userController'
   });
+
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/login');
 });
