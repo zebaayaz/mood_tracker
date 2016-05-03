@@ -15,26 +15,27 @@
 			    	<option ng-repeat="mood in moods" ng-selected="mood == newestMood">{{mood}}</option>
 			   	</select>
 			</label>
+      <ion-item class=item>
+  			<div class="row item-text-wrap">
+  				<div class="col" style="margin-top: 10px; margin-left: 6px;">
+  					Select Intensity:
+  				</div>
 
-			<div class="row">
-				<div class="col" style="margin-top: 10px; margin-left: 6px;">
-					Select Intensity:
-				</div>
-
-				<div class="col col-75" style="margin-left: 20px; margin-right: 20px">
-					<div class="item range">
-						<i class="icon ion-android-sad"></i>
-						  <input type="range" ng-model="moodScore" min="1" max="10">
-						  <i class="icon ion-android-happy"></i>
-					  </div>
-				</div>
+  				<div class="col col-75" style="margin-left: 20px; margin-right: 20px">
+  					<div class="item range">
+  						<i class="icon ion-android-sad"></i>
+  						  <input type="range" ng-model="moodScore" min="1" max="10">
+  						  <i class="icon ion-android-happy"></i>
+  					  </div>
+  				</div>
+        </ion-item>
 
 				  <div class="col">
 				  	<button class="button button-clear button-dark">{{moodScore}}</button>
 				  </div>
 			</div>
 
-  			<button class="button button-stable" ng-click="popUp('Mood', 'moods')">
+  			<button class="button button-stable" ng-click="popUp(Mood, moods)">
   				Add Custom Mood
 			</button>
 

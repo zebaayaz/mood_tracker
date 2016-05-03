@@ -18,4 +18,12 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
       $scope.show = [false, true];
     }
   };
+
+  var data = {
+    labels: ['Happy', 'Sad', 'Hungry'],
+    series: [20, 35, 55]
+  };
+  var options = {};
+
+  new Chartist.Pie('#chart', data, options);
 });
