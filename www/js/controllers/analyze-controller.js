@@ -23,7 +23,19 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
     labels: ['Happy', 'Sad', 'Hungry'],
     series: [20, 35, 55]
   };
-  var options = {};
 
-  new Chartist.Pie('#chart', data, options);
+  var options = {
+    showLabel: true
+  };
+
+  var responsiveOptions = [
+    ['screen and (min-width: 640px)', {
+      chartPadding: 30,
+    }],
+    ['screen and (min-width: 1024px)', {
+      chartPadding: 20
+    }]
+  ];
+
+  new Chartist.Pie('.ct-chart', data, options,responsiveOptions);
 });
