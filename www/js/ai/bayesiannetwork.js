@@ -5,8 +5,24 @@ var behaviors = {};
 var moodsGivenTrigger = {};
 var behaviorsGivenMood = {};
 
+var suggestions = {};
+
 //List of words to not be counted
 var blackListedWords = ['a', 'the', 'it'];
+
+function clearData(){
+    triggers = {};
+    moods = {};
+    behaviors = {};
+
+    moodsGivenTrigger = {};
+    behaviorsGivenMood = {};
+    suggestions['trigger']['mood']['behavior'] = "This is a suggestion for all 3"
+    suggestions['']['mood']['behavior'] = "This is a suggestion for mood behavior"
+    suggestions['trigger']['mood'][''] = "This is a suggestion for trigger mood"
+    suggestions['trigger']['']['behavior'] = "This is a suggestion for trigger behavior"
+
+}
 
 function extractWords(words){
   var wordlist = words.split(" ");
@@ -59,6 +75,10 @@ function inputMoodLog(mood, listofBehaviorStrings, listofTriggerStrings){
   for(var i = 0; i < triggerwords.length; i++){
     inputTriggerMoodData(mood, triggerwords[i]);
   }
+}
+
+function getListOfTriggerMoods(){
+    moodsGivenTrigger
 }
 
 function getMoodGivenTrigger(mood, trigger){
