@@ -1,20 +1,21 @@
 <ion-view view-title="Settings">
   <ion-content>
-    <h1>Settings</h1>
-
     <div class="list">
-
   <label class="item item-input item-select">
     <div class="input-label">
-      Lightsaber
+      Theme
     </div>
-    <select>
-      <option>Blue</option>
-      <option selected>Green</option>
-      <option>Red</option>
+    <select ng-model="theme" ng-change="themeChange(theme)">
+      <option ng-selected="selected">positive</option>
+      <option>light</option>
+      <option>stable</option>
+      <option>calm</option>
+      <option>dark</option>
     </select>
   </label>
-
+  <label class="item" ng-click="deleteAccount()">
+    Delete Account
+  </label>
 </div>
   </ion-content>
 </ion-view>
