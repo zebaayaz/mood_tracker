@@ -49,13 +49,13 @@
 }
 
 .history_date_input{
-  float: right;
-  text-align: right;
+  float: left;
+  text-align: left;
 }
 
 .analyze_date_input{
-  float: right;
-  text-align: right;
+  float: left;
+  text-align: left;
 }
 
 .history_card_date{
