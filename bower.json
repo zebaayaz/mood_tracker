@@ -5,6 +5,7 @@
     "ionic": "driftyco/ionic-bower#1.2.4"
   },
   "dependencies": {
-    "angular-chartist.js": "^3.3.13"
+    "angular-chartist.js": "^3.3.13",
+    "chartist": "^0.9.7"
   }
 }

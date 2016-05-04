@@ -1,5 +1,84 @@
 <ion-view view-title="History">
   <ion-content>
-    <h1>History</h1>
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Select By
+      </div>
+      <select ng-model="selectBy" ng-change="updateSelectBy(selectBy)">
+        <option ng-selected="selected">Date</option>
+        <option>Mood</option>
+      </select>
+    </label>
+    <form class="history_date_form" ng-show="show[0] "ng-submit="selectByDate()">
+      <div class="row">
+        <label class="item item-input item-stacked-label col-50">
+          <span  class="input-label">From</span>
+          <input class="history_date_input" type="date">
+        </label>
+        <label class="item item-input item-stacked-label col-50">
+          <span class="input-label">To</span>
+          <input class="history_date_input" type="date">
+        </label>
+      </div>
+    </form>
+    <form class="history_mood_form" ng-show="show[1]" ng-submit="selectByDate()">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Select Mood:
+        </div>
+        <select>
+          <option ng-repeat="mood in moods" ng-selected="mood == newestMood">{{mood}}</option>
+        </select>
+      </label>
+    </form>
+
+    <div class="card ">
+      <div ng-class="appTheme" class="item item-divider">
+        Happy
+      </div>
+      <div class="item">
+        <div class=" item row ">
+          <label class="col">
+            Date
+          </label>
+          <label class="col history_card_date">
+            11/2/2001
+          </label>
+        </div>
+          <div class="item row ">
+          <label class="col">
+            Intensity
+          </label>
+          <label class="col history_card_intensity">
+            5
+          </label>
+        </div>
+        <div class="item row ">
+          <label class="col">
+            Triggers
+          </label>
+          <label class="col history_card_triggers">
+            Exam, Cycling
+          </label>
+        </div>
+        <div class="item row ">
+          <label class="col">
+            Beliefs
+          </label>
+          <label class="col history_card_beliefs">
+            Exam, Cycling
+          </label>
+        </div>
+        <div class="item row ">
+          <label class="col">
+            Behaviors
+          </label>
+          <label class="col history_card_behaviors">
+            Exam, Cycling
+          </label>
+        </div>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>

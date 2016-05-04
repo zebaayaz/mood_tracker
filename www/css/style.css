@@ -1,1 +1,82 @@
 /* Empty. Add your own CSS if you like */
+
+.login_brand{
+  padding: 5%;
+  text-align: center;
+}
+
+.login_username{
+  text-align: center;
+}
+.signup_form{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 5%;
+}
+
+.login_form_signup{
+    text-align: center !important;
+}
+
+.login_form{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 5%;
+}
+
+.home_avg_heading{
+    text-align: center;
+    padding-top: 20%;
+    line-height: 60px;
+}
+
+.home_avg_value{
+  text-align: center;
+}
+
+.home_footer{
+  height: 70px;
+  border: none !important;
+  outline: none !important;
+}
+
+.home_input_button{
+  position: absolute;
+  width: 90% !important;
+  bottom: 0px;
+  height: 60px;
+  margin-left: 4%;
+}
+
+.history_date_input{
+  float: left;
+  text-align: left;
+}
+
+.analyze_date_input{
+  float: left;
+  text-align: left;
+}
+
+.history_card_date{
+  float:right;
+  text-align: right;
+}
+
+.history_card_intensity{
+  float:right;
+  text-align: right;
+}
+.history_card_triggers{
+  float:right;
+  text-align: right;
+}
+
+.history_card_beliefs{
+  float:right;
+  text-align: right;
+}
+.history_card_behaviors{
+  float:right;
+  text-align: right;
+}

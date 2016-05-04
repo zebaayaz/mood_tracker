@@ -6,9 +6,11 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('mood_tracker.controllers', []);
 
+var db = null;
+
 angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaSQLite) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -21,6 +23,20 @@ angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    // db = $cordovaSQLite.openDB({ name: "db" });
+    // $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS Log (log_id INTEGER PRIMARY KEY AUTO_INCREMENT, timestamp text NOT NULL, mood_id integer NOT NULL, intensity integer NOT NULL)");
+    // $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS Mood (mood_id INTEGER PRIMARY KEY AUTO_INCREMENT, mood TEXT)");
+    // $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS Trigger (trigger TEXT, FOREIGN KEY(id_page) references Log (log_id))");
+    // $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS Behavior (behavior TEXT, FOREIGN KEY(id_page) references Log (log_id))");
+    // $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS Belief (belief TEXT, FOREIGN KEY(id_page) references Log (log_id))");
+    // $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS Theme (name TEXT PRIMARY KEY, navBarColor INT, fontColor INT, background INT)");
+    // $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS User (name TEXT PRIMARY KEY, pin INTEGER)");
+    //
+    // $cordovaSQLite.execute(db, "INSERT INTO Mood (mood) VALUES ('Happy')");
+    // $cordovaSQLite.execute(db, "INSERT INTO Mood (mood) VALUES ('Sad')");
+    // $cordovaSQLite.execute(db, "INSERT INTO Mood (mood) VALUES ('Hungry')");
+
   });
 })
 
@@ -92,7 +108,21 @@ angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'
         controller: 'mood_inputController'
       }
     }
+  })
+
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    controller: 'userController'
+  })
+
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'userController'
   });
+
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/login');
 });

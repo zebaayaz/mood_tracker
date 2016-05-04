@@ -1,6 +1,35 @@
 <ion-view view-title="Analyze">
   <ion-content>
-    <h1>Analyze</h1>
-    <chartist class="ct-chart" chartist-data="chartist.barData" chartist-chart-type="Bar"></chartist>
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Select By
+      </div>
+      <select ng-model="selectBy" ng-change="updateSelectBy(selectBy)">
+        <option ng-selected="selected">Date</option>
+      </select>
+    </label>
+    <form class="analyze_date_form" ng-show="show[0] "ng-submit="selectByDate()">
+      <div class="row">
+        <label class="item item-input item-stacked-label col-50">
+          <span class="input-label">Start Date:</span>
+          <input class="analyze_date_input" type="date">
+        </label>
+        <label class="item item-input item-stacked-label col-50">
+          <span class="input-label">End Date:</span>
+          <input class="analyze_date_input" type="date">
+        </label>
+      </div>
+    </form>
+    <form class="analyze_mood_form" ng-show="show[1]" ng-submit="selectByDate()">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Select Mood:
+        </div>
+        <select>
+          <option ng-repeat="mood in moods" ng-selected="mood == newestMood">{{mood}}</option>
+        </select>
+      </label>
+    </form>
+    <div style="margin-top:10%;"class="ct-chart ct-golden-section"  id="chart"></div>
   </ion-content>
 </ion-view>

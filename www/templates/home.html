@@ -1,8 +1,11 @@
 <ion-view view-title="Home">
   <ion-content>
-    <h1>Home</h1>
-	<button class="button button-block button-positive" ng-click="mood_input()">
-  		Log Mood
-	</button>
+    <h1 class="home_avg_heading">Average Mood</h1>
+    <h2 class="home_avg_value"> {{mood}}</h2>
   </ion-content>
+  <div class="bar bar-footer home_footer">
+    <button ng-class="'button-'+appTheme" class="button button-block home_input_button" ng-click="mood_input()">
+        Log Mood
+    </button>
+  </div>
 </ion-view>

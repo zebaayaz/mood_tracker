@@ -1,7 +1,15 @@
-angular.module('mood_tracker.controllers').controller('mood_inputController', function($scope, $stateParams, $ionicPopup, $location) {
-
+angular.module('mood_tracker.controllers').controller('mood_inputController', function($scope,$window, $stateParams, $ionicPopup, $location, $cordovaSQLite) {
+	//get theme color
+	$scope.appTheme = 'positive';
+  var selectedTheme = $window.localStorage.appTheme;
+    if (selectedTheme) {
+        $scope.appTheme = selectedTheme;
+    } else {
+        $scope.appTheme = 'positive';
+    }
 	//main data arrays
-	$scope.moods = ["Happy", "Sad", "Hungry"];
+	//var db = $cordovaSQLite.openDB({ name: "db" });
+	$scope.moods = ["Happy", "Sad", "Hungry"]//$cordovaSQLite.execute(db, "SELECT mood from Mood");
 	$scope.moodScore = 5;
 	$scope.triggers = [];
 	$scope.beliefs = [];
@@ -47,6 +55,35 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 		});
 	}
 
+	// $scope.customMood = function(){
+	// 	var myPopup = $ionicPopup.show({
+	// 	    template: '<input type="text" data-ng-model="data.input">',
+	// 	    title: 'Enter a name for your custom mood',
+	// 	    scope: $scope,
+	// 	    buttons: [
+	// 	      { text: 'Cancel' },
+	// 	      {
+	// 	        text: '<b>Save</b>',
+	// 	        type: 'button-positive',
+	// 	        onTap: function(e) {
+	// 	        	if(!$scope.data.input){
+	// 	        		//prevent users from submitting empty strings
+	// 	        		e.preventDefault();
+	// 	        	}
+	// 	        	else{
+	// 	        		//return input as promise
+	// 	        		return $scope.data.input;
+	// 	        	}
+	// 	        }
+	// 	      }
+	// 	    ]
+	// 	});
+	// 	myPopup.then(function(res){
+	// 		$scope.newestMood = res;
+	// 		$cordovaSQLite.execute(db, "INSERT INTO Mood (mood) VALUES (mood)")
+	// 	});
+	//};
+
 	//get input from user then add input to specified array
 	$scope.popUp = function(inputName, array){
 		$scope.data = {};
@@ -68,8 +105,8 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 		        	}
 		        	else{
 		        		saved = true;
-		        		
-		        		//return input as promise 
+
+		        		//return input as promise
 		        		return $scope.data.input;
 		        	}
 		        }
@@ -80,25 +117,27 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 		myPopup.then(function(response){
 			if(saved){
 				$scope.$eval(array).push(response);
-				
+
 				if(inputName == "Mood"){ $scope.newestMood = response; }
 			}
-		}); 
+		});
 	}
 
 	//keeps track of which next button should be visible
 	$scope.next = function(){
 		$scope.show[$scope.position] = true;
-		$scope.buttons[$scope.position] = false;		
-		
+		$scope.buttons[$scope.position] = false;
+
 		$scope.position++;
-		$scope.buttons[$scope.position] = true;		
+		$scope.buttons[$scope.position] = true;
 	};
 
 	$scope.submit = function(){
 
 		//input information into the database
 		
+
+		//$cordovaSQLite.execute(db, "INSERT INTO Log (timestamp, mood_id, intensity) VALUES (SELECT datetime('now'), ")
 
 		//reset variables then go back to the home page
 		$scope.position = 0;
