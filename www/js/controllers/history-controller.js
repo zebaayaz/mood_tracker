@@ -8,8 +8,16 @@ angular.module('mood_tracker.controllers').controller('historyController', funct
         $scope.appTheme = 'positive';
     }
 
-  var start = document.getElementById("start").value;
-  var end = document.getElementById("end").value;
+
+  $scope.startDate = new Date(0);
+  $scope.endDate = new Date(Date.now());
+  $scope.setNewEndDate = function(endDate){
+    $scope.endDate = new Date(endDate);
+  };
+  $scope.setNewEndDate = function(startDate){
+    $scope.startDate = new Date(startDate);
+  };
+
   //select by date  or mood
   $scope.show = [true, false, false];
   $scope.selectBy = 'Date';
@@ -21,12 +29,13 @@ angular.module('mood_tracker.controllers').controller('historyController', funct
     $scope.logs = [];
     $scope.show[2] = true;
     _.each($scope.mood_logs, function(mood_log){
-    //  if(mood_log.datetime > start && mood_log.datetime < end){
+     if(mood_log.datetime > $scope.startDate && mood_log.datetime < $scope.endDate){
         console.log(JSON.stringify(mood_log));
         $scope.logs.push(mood_log);
-//      }
+      }
     });
   });
+  $scope.logs.push(mood_log);
   $scope.updateSelectBy = function(selected){
     if(selected === 'Date'){
       $scope.show = [true, false, false];
