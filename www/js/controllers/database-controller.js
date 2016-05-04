@@ -14,8 +14,6 @@ module.controller('DatabaseController', function($scope, $cordovaSQLite) {
   $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS Theme (name TEXT PRIMARY KEY, navBarColor INT, fontColor INT, background INT)");
   $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS User (name TEXT PRIMARY KEY, pin INTEGER)");
 
-
-
   // this is example code left for the moment so others can better understand database queries
   /*$scope.execute = function() {
     var query = "INSERT INTO test_table (data, data_num) VALUES (?,?)";

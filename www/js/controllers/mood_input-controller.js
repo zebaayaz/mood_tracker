@@ -1,4 +1,4 @@
-angular.module('mood_tracker.controllers').controller('mood_inputController', function($scope, $stateParams, $ionicPopup, $location) {
+angular.module('mood_tracker.controllers').controller('mood_inputController', function($scope, $stateParams, $ionicPopup, $location, $cordovaSQLite) {
 
 	//main data arrays
 	$scope.moods = ["Happy", "Sad", "Hungry"];
@@ -98,6 +98,7 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 	$scope.submit = function(){
 
 		//input information into the database
+		
 
 		//reset variables then go back to the home page
 		$scope.position = 0;
