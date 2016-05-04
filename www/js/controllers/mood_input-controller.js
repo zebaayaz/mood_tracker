@@ -1,4 +1,4 @@
-angular.module('mood_tracker.controllers').controller('mood_inputController', function($scope, $stateParams, $ionicPopup, $location, $cordovaSQLite) {
+angular.module('mood_tracker.controllers').controller('mood_inputController', function($scope, $stateParams, $ionicPopup, $location) {
 
 	//main data arrays
 	$scope.moods = ["Happy", "Sad", "Hungry"];
