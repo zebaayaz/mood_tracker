@@ -10,7 +10,7 @@ var db = null;
 
 angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'])
 
-.run(function($ionicPlatform, $cordovaSQLite) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -37,6 +37,28 @@ angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'
     // $cordovaSQLite.execute(db, "INSERT INTO Mood (mood) VALUES ('Sad')");
     // $cordovaSQLite.execute(db, "INSERT INTO Mood (mood) VALUES ('Hungry')");
 
+    var moods = ['Happy', 'Sad', 'Hungry'];
+
+    var exampleMood1 = {
+      datetime: new Date(Date.now()),
+      mood: 'Happy',
+      intensity: 5,
+      triggers: ['Exam'],
+      beliefs: ['Will fail'],
+      behaviors: ['Failed exam', 'Went cycling']
+    }
+
+    var exampleMood2 = {
+      datetime: new Date(Date.now()),
+      mood: 'Sad',
+      intensity: 10,
+      triggers: ['I suck'],
+      beliefs: ['I am the worst'],
+      behaviors: ['Ate worms']
+    }
+
+    localforage.setItem('moods', moods);
+    localforage.setItem('mood_logs', [exampleMood1, exampleMood2]);
   });
 })
 

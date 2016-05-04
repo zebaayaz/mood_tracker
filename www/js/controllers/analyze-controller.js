@@ -1,7 +1,30 @@
 angular.module('mood_tracker.controllers').controller('analyzeController', function($scope,$window, $stateParams) {
   $scope.show = [true, false];
   $scope.selectBy = 'Date';
-  $scope.moods = ["Happy", "Sad", "Hungry"];
+  localforage.getItem('moods').then(function(res){
+    $scope.moods = res;
+    localforage.getItem('mood_logs').then(function(logs){
+      var data = {
+        labels: $scope.moods,
+        series: [20, 35, 55]
+      };
+
+      var options = {
+        showLabel: true
+      };
+
+      var responsiveOptions = [
+        ['screen and (min-width: 640px)', {
+          chartPadding: 30
+        }],
+        ['screen and (min-width: 1024px)', {
+          chartPadding: 20
+        }]
+      ];
+
+      new Chartist.Pie('.ct-chart', data, options, responsiveOptions);
+    });
+  });
  // get theme
   $scope.appTheme = 'positive';
   var selectedTheme = $window.localStorage.appTheme;
@@ -19,23 +42,4 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
     }
   };
 
-  var data = {
-    labels: ['Happy', 'Sad', 'Hungry'],
-    series: [20, 35, 55]
-  };
-
-  var options = {
-    showLabel: true
-  };
-
-  var responsiveOptions = [
-    ['screen and (min-width: 640px)', {
-      chartPadding: 30,
-    }],
-    ['screen and (min-width: 1024px)', {
-      chartPadding: 20
-    }]
-  ];
-
-  new Chartist.Pie('.ct-chart', data, options,responsiveOptions);
 });
