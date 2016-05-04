@@ -35,7 +35,6 @@ angular.module('mood_tracker.controllers').controller('historyController', funct
       }
     });
   });
-  $scope.logs.push(mood_log);
   $scope.updateSelectBy = function(selected){
     if(selected === 'Date'){
       $scope.show = [true, false, false];
