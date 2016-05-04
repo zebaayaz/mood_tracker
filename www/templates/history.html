@@ -13,11 +13,11 @@
       <div class="row">
         <label class="item item-input item-stacked-label col-50">
           <span  class="input-label">From</span>
-          <input class="history_date_input" id="start" type="date" ng-model="startDate">
+          <input class="history_date_input" id="start" type="date" ng-model="startDate" ng-change="setNewStartDate(startDate)">
         </label>
         <label class="item item-input item-stacked-label col-50">
           <span class="input-label">To</span>
-          <input class="history_date_input" id="end" type="date" ng-model="EndDate">
+          <input class="history_date_input" id="end" type="date" ng-model="endDate" ng-change="setNewEndDate(EndDate)">
         </label>
       </div>
     </form>
