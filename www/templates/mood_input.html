@@ -11,7 +11,7 @@
 			      	Select Mood:
 			   	</div>
 
-			   	<select>
+			   	<select id="mood_select" ng-model="newestMood" ng-change="changeMood()">
 			    	<option ng-repeat="mood in moods" ng-selected="mood == newestMood">{{mood}}</option>
 			   	</select>
 			</label>
@@ -35,7 +35,7 @@
 				  </div>
 			</div>
 
-  			<button class="button button-stable" ng-click="popUp(Mood, moods)">
+  			<button class="button button-stable" ng-click="popUp('Mood', moods)">
   				Add Custom Mood
 			</button>
 
@@ -62,7 +62,7 @@
 			    </li>
 			</ul>
 
-  			<button class="button button-stable" ng-click="popUp('Trigger', 'triggers')">
+  			<button class="button button-stable" ng-click="popUp('Trigger', triggers)">
   				Add New Trigger
 			</button>
 
@@ -89,7 +89,7 @@
 			    </li>
 			</ul>
 
-  			<button class="button button-stable" ng-click="popUp('Belief', 'beliefs')">
+  			<button class="button button-stable" ng-click="popUp('Belief', beliefs)">
   				Add New Belief
 			</button>
 
@@ -115,7 +115,7 @@
 			    </li>
 			</ul>
 
-  			<button class="button button-stable" ng-click="popUp('Behavior', 'behaviors')">
+  			<button class="button button-stable" ng-click="popUp('Behavior', behaviors)">
   				Add New Behavior
 			</button>
 
