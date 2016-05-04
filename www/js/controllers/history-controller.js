@@ -13,9 +13,11 @@ angular.module('mood_tracker.controllers').controller('historyController', funct
   $scope.endDate = new Date(Date.now());
   $scope.setNewEndDate = function(endDate){
     $scope.endDate = new Date(endDate);
+  //  $window.location.reload(true);
   };
-  $scope.setNewEndDate = function(startDate){
+  $scope.setNewStartDate = function(startDate){
     $scope.startDate = new Date(startDate);
+  //  $window.location.reload(true);
   };
 
   //select by date  or mood
@@ -35,7 +37,6 @@ angular.module('mood_tracker.controllers').controller('historyController', funct
       }
     });
   });
-  $scope.logs.push(mood_log);
   $scope.updateSelectBy = function(selected){
     if(selected === 'Date'){
       $scope.show = [true, false, false];
