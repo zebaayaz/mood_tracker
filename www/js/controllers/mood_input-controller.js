@@ -12,8 +12,9 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
     }
 	//main data arrays
 	localforage.getItem('moods').then(function(value){
-		$scope.moods = value
-	});
+		$scope.moods = value;
+		console.log($scope.moods);
+
 
 
 	$scope.moodScore = 5;
@@ -94,7 +95,7 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 
 		myPopup.then(function(response){
 			if(saved){
-				$scope.$eval(array).push(response);
+				array.push(response);
 				if(inputName == "Mood"){
 					localforage.getItem('moods').then(function(value){
 					value.push($scope.data.input);
@@ -150,4 +151,5 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 	$scope.remove = function(object, array){
 		$scope.$eval(array).splice($scope.$eval(array).indexOf(object),1);
 	};
+	});
 });

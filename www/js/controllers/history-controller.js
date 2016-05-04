@@ -21,10 +21,10 @@ angular.module('mood_tracker.controllers').controller('historyController', funct
     $scope.logs = [];
     $scope.show[2] = true;
     _.each($scope.mood_logs, function(mood_log){
-      if(mood_log.datetime > start && mood_log.datetime < end){
+    //  if(mood_log.datetime > start && mood_log.datetime < end){
         console.log(JSON.stringify(mood_log));
         $scope.logs.push(mood_log);
-      }
+//      }
     });
   });
   $scope.updateSelectBy = function(selected){
