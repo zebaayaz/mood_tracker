@@ -9,19 +9,22 @@
         <option>Mood</option>
       </select>
     </label>
-    <form class="history_date_form" ng-show="show[0] "ng-submit="selectByDate()">
+    <form class="history_date_form" ng-show="show[0]">
       <div class="row">
         <label class="item item-input item-stacked-label col-50">
           <span  class="input-label">From</span>
-          <input class="history_date_input" type="date">
+          <input class="history_date_input" id="start" type="date">
         </label>
         <label class="item item-input item-stacked-label col-50">
           <span class="input-label">To</span>
-          <input class="history_date_input" type="date">
+          <input class="history_date_input" id="end" type="date">
+          <button class="button button-positive" ng-click="selectByDate()">
+            Submit
+          </button>
         </label>
       </div>
     </form>
-    <form class="history_mood_form" ng-show="show[1]" ng-submit="selectByDate()">
+    <form class="history_mood_form" ng-show="show[1]">
       <label class="item item-input item-select">
         <div class="input-label">
           Select Mood:
@@ -32,12 +35,12 @@
       </label>
     </form>
 
-    <div class="card ">
+    <div class="card" ng-repeat="log in logs" ng-show="show[2]">
       <div ng-class="appTheme" class="item item-divider">
-        Happy
+        {{log.mood}}
       </div>
       <div class="item">
-        <div class=" item row ">
+        <div class=" item row">
           <label class="col">
             Date
           </label>
@@ -50,31 +53,31 @@
             Intensity
           </label>
           <label class="col history_card_intensity">
-            5
+            {{log.intensity}}
           </label>
         </div>
         <div class="item row ">
           <label class="col">
             Triggers
           </label>
-          <label class="col history_card_triggers">
-            Exam, Cycling
+          <label class="col history_card_triggers" ng-repeat="trigger in log.triggers">
+            {{trigger}}
           </label>
         </div>
         <div class="item row ">
           <label class="col">
             Beliefs
           </label>
-          <label class="col history_card_beliefs">
-            Exam, Cycling
+          <label class="col history_card_beliefs" ng-repeat="belief in log.beliefs">
+            {{belief}}
           </label>
         </div>
-        <div class="item row ">
+        <div class="item row">
           <label class="col">
             Behaviors
           </label>
-          <label class="col history_card_behaviors">
-            Exam, Cycling
+          <label class="col history_card_behaviors" ng-repeat="behavior in log.behaviors">
+            {{behavior}}
           </label>
         </div>
       </div>
