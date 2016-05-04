@@ -1,5 +1,12 @@
 <ion-view view-title="Help">
   <ion-content>
     <h1>Help</h1>
+    <ion-list ng-repeat="moodSuggest in suggestionlist">
+      <ion-item>
+          Mood: {{moodSuggest.mood}} <br>
+          Behavior: {{moodSuggest.behavior}} <br>
+          Probability: {{moodSuggest.probability}} <br>
+          Suggestion: {{moodSuggest.suggestion}}</ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
