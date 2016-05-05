@@ -122,7 +122,6 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 	$scope.submit = function(){
 
 		//input information into the database
-		
 
 		console.log("Newest Mood: " + $scope.newestMood);
 

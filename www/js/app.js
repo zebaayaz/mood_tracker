@@ -67,6 +67,15 @@ angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'
         localforage.setItem('mood_logs', [exampleMood1, exampleMood2]);
       }
     });
+    
+    var exampleUser = {
+      username: 'bfresh',
+      password: 'password'
+    }
+
+    localforage.setItem('moods', moods);
+    localforage.setItem('mood_logs', [exampleMood1, exampleMood2]);
+    localforage.setItem('user', [exampleUser]);
   });
 })
 
