@@ -10,10 +10,14 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
     } else {
         $scope.appTheme = 'positive';
     }
+
+		$scope.changeMood = function(){
+			$scope.newestMood = document.getElementById('mood_select').value;
+		};
 	//main data arrays
 	localforage.getItem('moods').then(function(value){
-		$scope.moods = value
-	});
+		$scope.moods = value;
+
 
 
 	$scope.moodScore = 5;
@@ -57,7 +61,7 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 
 		//saves the edited text back into the array
 		myPopup.then(function(response){
-			$scope.$eval(array).splice(index, 1, response);
+			array.splice(index, 1, response);
 		});
 	}
 
@@ -94,11 +98,11 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 
 		myPopup.then(function(response){
 			if(saved){
-				$scope.$eval(array).push(response);
+				array.push(response);
 				if(inputName == "Mood"){
 					localforage.getItem('moods').then(function(value){
-					value.push($scope.data.input);
-					localforage.setItem('moods', value);
+						value.push($scope.data.input);
+						localforage.setItem('moods', value);
 				 	});
 					$scope.newestMood = response;
 				}
@@ -120,8 +124,10 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 		//input information into the database
 		
 
+		console.log("Newest Mood: " + $scope.newestMood);
+
 		var newLog = {
-			datetime: Date.now(),
+			datetime: new Date(Date.now()),
 			mood: $scope.newestMood,
 			intensity: $scope.moodScore,
 			triggers: $scope.triggers,
@@ -149,6 +155,7 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 
 	//remove an input from specified array
 	$scope.remove = function(object, array){
-		$scope.$eval(array).splice($scope.$eval(array).indexOf(object),1);
+		array.splice(array.indexOf(object),1);
 	};
+	});
 });

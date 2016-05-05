@@ -57,8 +57,16 @@ angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'
       behaviors: ['Ate worms']
     }
 
-    localforage.setItem('moods', moods);
-    localforage.setItem('mood_logs', [exampleMood1, exampleMood2]);
+    localforage.getItem('moods').then(function(response){
+      if(response === null){
+        localforage.setItem('moods', moods);
+      }
+    });
+    localforage.getItem('mood_logs').then(function(response){
+      if(response === null){
+        localforage.setItem('mood_logs', [exampleMood1, exampleMood2]);
+      }
+    });
   });
 })
 

@@ -13,14 +13,11 @@
       <div class="row">
         <label class="item item-input item-stacked-label col-50">
           <span  class="input-label">From</span>
-          <input class="history_date_input" id="start" type="date">
+          <input class="history_date_input" id="start" type="date" ng-model="startDate" ng-change="setNewStartDate(startDate)">
         </label>
         <label class="item item-input item-stacked-label col-50">
           <span class="input-label">To</span>
-          <input class="history_date_input" id="end" type="date">
-          <button class="button button-positive" ng-click="selectByDate()">
-            Submit
-          </button>
+          <input class="history_date_input" id="end" type="date" ng-model="endDate" ng-change="setNewEndDate(endDate)">
         </label>
       </div>
     </form>
@@ -45,7 +42,7 @@
             Date
           </label>
           <label class="col history_card_date">
-            11/2/2001
+            {{log.datetime.toDateString()}}
           </label>
         </div>
           <div class="item row ">

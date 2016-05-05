@@ -1,4 +1,7 @@
 angular.module('mood_tracker.controllers').controller('homeController', function($scope,$window, $stateParams, $location) {
+
+	//$scope.mood = "How are you feeling today?";
+
 	// get theme
 	$scope.appTheme = 'positive';
   var selectedTheme = $window.localStorage.appTheme;

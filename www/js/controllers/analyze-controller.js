@@ -3,10 +3,12 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
   $scope.selectBy = 'Date';
   localforage.getItem('moods').then(function(res){
     $scope.moods = res;
+    console.log($scope.moods);
     localforage.getItem('mood_logs').then(function(logs){
+      $scope.mood_scores = _.pluck(logs, 'intensity');
       var data = {
         labels: $scope.moods,
-        series: [20, 35, 55]
+        series: $scope.mood_scores
       };
 
       var options = {
