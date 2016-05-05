@@ -5,13 +5,10 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
   $scope.mood_logs = {};
   $scope.mood_scores =[];
   $scope.logs =[];
-  localforage.getItem('moods').then(function(res){
-    $scope.moods = res;
-    console.log($scope.moods);
-    localforage.getItem('mood_logs').then(function(logs){
-      $scope.mood_logs = logs;
-        updateChartByDate();
-    });
+
+  localforage.getItem('mood_logs').then(function(logs){
+    $scope.mood_logs = logs;
+    updateChartByDate();
   });
   // get theme
   $scope.appTheme = 'positive';
@@ -52,6 +49,7 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
         $scope.logs.push(mood_log);
       }
     });
+    $scope.moods = _.pluck($scope.logs, 'mood');
     $scope.mood_scores = _.pluck($scope.logs, 'intensity');
     var data = {
       labels: $scope.moods,
