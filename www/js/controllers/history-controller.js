@@ -58,17 +58,26 @@ angular.module('mood_tracker.controllers').controller('historyController', funct
 
   $scope.mood_logs = {};
   $scope.logs = [];
+  $scope.moods =[];
 
   //select by date  or mood
   $scope.show = [true, false, true, false];
   $scope.selectBy = 'Date';
 
+
 $scope.$on('$ionicView.enter', function() {
     $scope.mood_logs = {};
     $scope.logs = [];
+    localforage.getItem('moods').then(function(response){
+      $scope.moods = response;
+      updateByDate();
+      updateByMood();
+    //  $window.location.reload(true);
+    });
       localforage.getItem('mood_logs').then(function(response){
         $scope.mood_logs = response;
         updateByDate();
+        updateByMood();
       //  $window.location.reload(true);
       });
   });
