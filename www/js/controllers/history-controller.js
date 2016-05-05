@@ -20,6 +20,7 @@ angular.module('mood_tracker.controllers').controller('historyController', funct
   //  $window.location.reload(true);
   };
 
+  $scope.mood_logs = {};
   //select by date  or mood
   $scope.show = [true, false, false];
   $scope.selectBy = 'Date';

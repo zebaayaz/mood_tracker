@@ -20,16 +20,6 @@
         </label>
       </div>
     </form>
-    <form class="analyze_mood_form" ng-show="show[1]" ng-submit="selectByDate()">
-      <label class="item item-input item-select">
-        <div class="input-label">
-          Select Mood:
-        </div>
-        <select>
-          <option ng-repeat="mood in moods" ng-selected="mood == newestMood">{{mood}}</option>
-        </select>
-      </label>
-    </form>
-    <div style="margin-top:10%;"class="ct-chart ct-golden-section"  id="chart"></div>
+    <div style="margin-top:10%;"class="ct-chart ct-golden-section" id="chart"></div>
   </ion-content>
 </ion-view>

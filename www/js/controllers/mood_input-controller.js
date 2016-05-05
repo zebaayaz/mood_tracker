@@ -17,7 +17,7 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 	//main data arrays
 	localforage.getItem('moods').then(function(value){
 		$scope.moods = value;
-
+	});
 
 
 	$scope.moodScore = 5;
