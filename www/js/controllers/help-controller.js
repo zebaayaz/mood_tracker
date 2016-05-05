@@ -151,11 +151,13 @@ angular.module('mood_tracker.controllers').controller('helpController', function
                     continue;
                 }
 
+                var probabilityf = behaviorsGivenMood[behaviorkey][moodkey]/moods[moodkey];
+                probabilityf = probabilityf.toFixed(2);
                 suggestionList.push({
                     mood: moodkey,
                     behavior: behaviorkey,
                     suggestion: suggestions[moodkey][behaviorkey],
-                    probability: behaviorsGivenMood[behaviorkey][moodkey]/moods[moodkey]
+                    probability: probabilityf
                 });
 
             }

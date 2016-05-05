@@ -11,8 +11,13 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
         $scope.appTheme = 'positive';
     }
 
+		$scope.moodScore = 5;
 		$scope.changeMood = function(){
 			$scope.newestMood = document.getElementById('mood_select').value;
+		};
+
+		$scope.changeMoodScore = function(){
+			$scope.moodScore = document.getElementById('intensity').value;
 		};
 	//main data arrays
 	localforage.getItem('moods').then(function(value){
@@ -20,7 +25,7 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 	});
 
 
-	$scope.moodScore = 5;
+
 	$scope.triggers = [];
 	$scope.beliefs = [];
 	$scope.behaviors = [];

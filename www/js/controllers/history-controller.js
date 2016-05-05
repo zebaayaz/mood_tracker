@@ -71,13 +71,11 @@ $scope.$on('$ionicView.enter', function() {
     localforage.getItem('moods').then(function(response){
       $scope.moods = response;
       updateByDate();
-      updateByMood();
     //  $window.location.reload(true);
     });
       localforage.getItem('mood_logs').then(function(response){
         $scope.mood_logs = response;
         updateByDate();
-        updateByMood();
       //  $window.location.reload(true);
       });
   });
