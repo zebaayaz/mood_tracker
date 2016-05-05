@@ -40,12 +40,7 @@ angular.module('mood_tracker.controllers').controller('helpController', function
         behaviorsGivenMood = {};
         suggestions = {};
 
-        suggestions['mood'] = {};
-        suggestions['Sad'] = {};
 
-        suggestions['mood']['behavior'] = "This is a suggestion for mood behavior";
-        suggestions['Sad']['it'] = "This should not appear anywhere because 'it' should be blacklisted";
-        suggestions['Sad']['failure'] = "Don't be a waste of space";
     }
 
     function extractWords(words){
@@ -137,6 +132,17 @@ angular.module('mood_tracker.controllers').controller('helpController', function
 
     }
 
+    function inputNewSuggestion(moodString, behaviorString, suggestionString){
+
+        if(suggestions[moodString] === undefined){
+            suggestions[moodString] = {};
+        }
+
+        suggestions[moodString][behaviorString] = suggestionString;
+
+
+
+    }
 
     function getSuggestions(){
         var suggestionList = [];
@@ -161,12 +167,20 @@ angular.module('mood_tracker.controllers').controller('helpController', function
     }
 
     clearData();
-    inputMoodLog("Happy", ["Behavior One", "Behavior Two"], ["Trigger One", "Trigger Two"]);
-    inputMoodLog("Sad", ["I am a failure", "it is a failure", "cool"], ["Trigger One", "Trigger Two"]);
-    inputMoodLog("Sad", ["it is I am"], ["Trigger One", "Trigger Two"]);
 
-    $scope.suggestionlist = getSuggestions();
+    inputNewSuggestion('mood', 'behavior', "This is a suggestion for mood behavior");
+    inputNewSuggestion('Sad', 'it', "This should not appear anywhere because 'it' should be blacklisted");
+    inputNewSuggestion('Sad', 'failure', "Don't be a waste of space");
+    inputNewSuggestion('Happy', 'cycling', "Use a car instead");
 
 
+    localforage.getItem('mood_logs').then(function(response){
+        for(var i = 0; i < response.length; i++){
+            console.log(response[i].triggers[0]);
+            inputMoodLog(response[i].mood, response[i].behaviors, response[i].triggers);
+        }
+
+        $scope.suggestionlist = getSuggestions();
+    });
 
 });
