@@ -1,12 +1,38 @@
 <ion-view view-title="Help">
   <ion-content>
-    <h1>Help</h1>
-    <ion-list ng-repeat="moodSuggest in suggestionlist">
-      <ion-item>
-          Mood: {{moodSuggest.mood}} <br>
-          Behavior: {{moodSuggest.behavior}} <br>
-          Probability: {{moodSuggest.probability}} <br>
-          Suggestion: {{moodSuggest.suggestion}}</ion-item>
-    </ion-list>
+
+    <div class="card" ng-repeat="moodSuggest in suggestionlist">
+      <div ng-class="appTheme" class="item item-divider">
+        Most Common Mood: {{moodSuggest.mood}}
+      </div>
+      <div class="item">
+        <div class="item row ">
+          <label class="col">
+            Most Associated Behavior
+          </label>
+          <label class="col history_card_triggers">
+            {{moodSuggest.behavior}}
+          </label>
+        </div>
+        <div class="item row ">
+          <label class="col">
+            Probability Of Occurance
+          </label>
+          <label class="col history_card_beliefs">
+            {{moodSuggest.probability}}
+          </label>
+        </div>
+        <div class="item row">
+          <label class="col">
+            Suggested Coping Strategy
+          </label>
+          <label class="col history_card_behaviors">
+            {{moodSuggest.suggestion}}
+          </label>
+        </div>
+      </div>
+    </div>
+
+
   </ion-content>
 </ion-view>

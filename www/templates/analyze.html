@@ -8,15 +8,15 @@
         <option ng-selected="selected">Date</option>
       </select>
     </label>
-    <form class="analyze_date_form" ng-show="show[0] "ng-submit="selectByDate()">
+    <form class="analyze_date_form" ng-show="show[0]">
       <div class="row">
         <label class="item item-input item-stacked-label col-50">
-          <span class="input-label">Start Date:</span>
-          <input class="analyze_date_input" type="date">
+          <span  class="input-label">From</span>
+          <input class="history_date_input" id="start" type="date" ng-model="startDate" ng-change="setNewStartDate(startDate)">
         </label>
         <label class="item item-input item-stacked-label col-50">
-          <span class="input-label">End Date:</span>
-          <input class="analyze_date_input" type="date">
+          <span class="input-label">To</span>
+          <input class="history_date_input" id="end" type="date" ng-model="endDate" ng-change="setNewEndDate(endDate)">
         </label>
       </div>
     </form>
