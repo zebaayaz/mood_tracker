@@ -156,5 +156,4 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 	$scope.remove = function(object, array){
 		array.splice(array.indexOf(object),1);
 	};
-	});
 });
