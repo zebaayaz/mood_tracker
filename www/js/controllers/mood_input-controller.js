@@ -137,7 +137,7 @@ angular.module('mood_tracker.controllers').controller('mood_inputController', fu
 		localforage.getItem('mood_logs').then(function(response){
 			response.push(newLog);
 			localforage.setItem('mood_logs', response).then(function(res){
-				console.log(JSON.stringify(res));
+				JSON.stringify(res);
 			});
 		});
 

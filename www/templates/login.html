@@ -1,12 +1,12 @@
-<ion-view view-title="Login">
+<ion-view view-title="Login"  cache-view="false">
   <ion-content>
     <h1 class="login_brand"> MOOD TRACKER </h1>
-    <h3 class="login_username"> Welcome {{username}} </h3>
+    <h3 class="login_username"> Welcome {{loginData.username}} </h3>
     <form class="login_form" ng-submit="doLogin()">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">PIN</span>
-          <input type="password" ng-model="loginData.password">
+          <input type="password" ng-model="loginData.passwordInput">
         </label>
         <label class="item">
           <button ng-class="'button-'+appTheme" class="button button-block" type="submit">Log in</button>
