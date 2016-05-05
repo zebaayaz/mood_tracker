@@ -32,7 +32,7 @@ angular.module('mood_tracker.controllers').controller('historyController', funct
   var updateByDate=function(){
     $scope.logs =[];
     _.each($scope.mood_logs, function(mood_log){
-      if(mood_log.datetime > $scope.startDate && mood_log.datetime < $scope.endDate){
+      if(mood_log.datetime >= $scope.startDate && mood_log.datetime <= $scope.endDate){
         console.log(JSON.stringify(mood_log));
         $scope.logs.push(mood_log);
       }
@@ -63,14 +63,13 @@ angular.module('mood_tracker.controllers').controller('historyController', funct
   $scope.show = [true, false, true, false];
   $scope.selectBy = 'Date';
 
-  $scope.$on('$ionicView.enter', function() {
-      localforage.getItem('moods').then(function(response){
-        $scope.moods = response;
-      });
+$scope.$on('$ionicView.enter', function() {
+    $scope.mood_logs = {};
+    $scope.logs = [];
       localforage.getItem('mood_logs').then(function(response){
         $scope.mood_logs = response;
-        $scope.logs = [];
         updateByDate();
+      //  $window.location.reload(true);
       });
   });
 

@@ -6,21 +6,14 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
   $scope.mood_scores =[];
   $scope.logs =[];
 
-<<<<<<< HEAD
-  localforage.getItem('mood_logs').then(function(logs){
-    $scope.mood_logs = logs;
-    updateChartByDate();
-=======
   $scope.$on('$ionicView.enter', function() {
-      localforage.getItem('moods').then(function(res){
-        $scope.moods = res;
-        console.log($scope.moods);
-        localforage.getItem('mood_logs').then(function(logs){
-          $scope.mood_logs = logs;
-            updateChartByDate();
-        });
-      });
->>>>>>> e1b45feacb44a43d08800c9bd771fbdeee249400
+    $scope.mood_logs = {};
+    $scope.logs =[];
+    localforage.getItem('mood_logs').then(function(logs){
+      $scope.mood_logs = logs;
+      updateChartByDate();
+    //  $window.location.reload(true);
+    });
   });
 
 
@@ -58,19 +51,36 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
 
   var updateChartByDate=function(){
     $scope.logs =[];
+    $scope.mood_scores=[];
+    $scope.allMoods=[];
+    $scope.moods=[];
+
     _.each($scope.mood_logs, function(mood_log){
-      if(mood_log.datetime > $scope.startDate && mood_log.datetime <= $scope.endDate){
-        console.log(JSON.stringify(mood_log));
+      if(mood_log.datetime >= $scope.startDate && mood_log.datetime <= $scope.endDate){
+      //  console.log(JSON.stringify(mood_log));
         $scope.logs.push(mood_log);
       }
     });
-    $scope.moods = _.pluck($scope.logs, 'mood');
-    $scope.mood_scores = _.pluck($scope.logs, 'intensity');
+    $scope.allMoods = _.pluck($scope.logs, 'mood');
+    $scope.moods = _.unique($scope.allMoods);
+    console.log(JSON.stringify($scope.moods));
+  //  console.log(JSON.stringify($scope.allMoods));
+    _.each($scope.moods,function(unique_mood){
+      var count = 0;
+      _.each($scope.allMoods,function(mood){
+        if(unique_mood === mood){
+          count++;
+        }
+      });
+      //console.log(JSON.stringify($scope.mood_scores));
+      $scope.mood_scores.push(count);
+    });
     var data = {
       labels: $scope.moods,
       series: $scope.mood_scores
     };
 
+    //console.log(JSON.stringify(data));
     var options = {
       showLabel: true
     };
@@ -93,6 +103,7 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
       updateChartByDate();
       $scope.show = [true, false];
     }else{
+      updateChartByDate();
       $scope.show = [false, true];
     }
   };
