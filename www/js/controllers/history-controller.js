@@ -13,12 +13,16 @@ angular.module('mood_tracker.controllers').controller('historyController', funct
   $scope.endDate = new Date(Date.now());
   $scope.setNewEndDate = function(endDate){
     $scope.endDate = new Date(endDate);
-  //  $window.location.reload(true);
+    //console.log($scope.endDate);
+   //$window.location.reload(true);
   };
   $scope.setNewStartDate = function(startDate){
     $scope.startDate = new Date(startDate);
-  //  $window.location.reload(true);
+    //console.log($scope.startDate);
+    //$window.location.reload(true);
   };
+  $scope.mood_logs = {};
+  $scope.logs = [];
 
   //select by date  or mood
   $scope.show = [true, false, false];
