@@ -5,14 +5,19 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
   $scope.mood_logs = {};
   $scope.mood_scores =[];
   $scope.logs =[];
-  localforage.getItem('moods').then(function(res){
-    $scope.moods = res;
-    console.log($scope.moods);
-    localforage.getItem('mood_logs').then(function(logs){
-      $scope.mood_logs = logs;
-        updateChartByDate();
-    });
+
+  $scope.$on('$ionicView.enter', function() {
+      localforage.getItem('moods').then(function(res){
+        $scope.moods = res;
+        console.log($scope.moods);
+        localforage.getItem('mood_logs').then(function(logs){
+          $scope.mood_logs = logs;
+            updateChartByDate();
+        });
+      });
   });
+
+
   // get theme
   $scope.appTheme = 'positive';
   var selectedTheme = $window.localStorage.appTheme;
@@ -21,6 +26,7 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
   } else {
     $scope.appTheme = 'positive';
   }
+
 
 
   $scope.startDate = new Date(0);
@@ -47,7 +53,7 @@ angular.module('mood_tracker.controllers').controller('analyzeController', funct
   var updateChartByDate=function(){
     $scope.logs =[];
     _.each($scope.mood_logs, function(mood_log){
-      if(mood_log.datetime > $scope.startDate && mood_log.datetime < $scope.endDate){
+      if(mood_log.datetime > $scope.startDate && mood_log.datetime <= $scope.endDate){
         console.log(JSON.stringify(mood_log));
         $scope.logs.push(mood_log);
       }

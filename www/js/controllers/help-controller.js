@@ -38,8 +38,6 @@ angular.module('mood_tracker.controllers').controller('helpController', function
 
         moodsGivenTrigger = {};
         behaviorsGivenMood = {};
-        suggestions = {};
-
 
     }
 
@@ -166,21 +164,25 @@ angular.module('mood_tracker.controllers').controller('helpController', function
         return suggestionList;
     }
 
-    clearData();
+
 
     inputNewSuggestion('mood', 'behavior', "This is a suggestion for mood behavior");
     inputNewSuggestion('Sad', 'it', "This should not appear anywhere because 'it' should be blacklisted");
     inputNewSuggestion('Sad', 'failure', "Don't be a waste of space");
     inputNewSuggestion('Happy', 'cycling', "Use a car instead");
 
+    $scope.$on('$ionicView.enter', function() {
+        localforage.getItem('mood_logs').then(function(response){
+            clearData();
 
-    localforage.getItem('mood_logs').then(function(response){
-        for(var i = 0; i < response.length; i++){
-            console.log(response[i].triggers[0]);
-            inputMoodLog(response[i].mood, response[i].behaviors, response[i].triggers);
-        }
+            for(var i = 0; i < response.length; i++){
+                inputMoodLog(response[i].mood, response[i].behaviors, response[i].triggers);
+            }
 
-        $scope.suggestionlist = getSuggestions();
+            $scope.suggestionlist = getSuggestions();
+        });
     });
+
+
 
 });
