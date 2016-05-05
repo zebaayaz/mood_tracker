@@ -36,7 +36,6 @@ angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'
     // $cordovaSQLite.execute(db, "INSERT INTO Mood (mood) VALUES ('Happy')");
     // $cordovaSQLite.execute(db, "INSERT INTO Mood (mood) VALUES ('Sad')");
     // $cordovaSQLite.execute(db, "INSERT INTO Mood (mood) VALUES ('Hungry')");
-
     var moods = ['Happy', 'Sad', 'Hungry'];
 
     var exampleMood1 = {
@@ -67,15 +66,17 @@ angular.module('mood_tracker', ['ionic', 'ngCordova', 'mood_tracker.controllers'
         localforage.setItem('mood_logs', [exampleMood1, exampleMood2]);
       }
     });
-    
+
     var exampleUser = {
       username: 'bfresh',
       password: 'password'
     }
 
-    localforage.setItem('moods', moods);
-    localforage.setItem('mood_logs', [exampleMood1, exampleMood2]);
-    localforage.setItem('user', [exampleUser]);
+    localforage.getItem('user').then(function(response){
+      if(response === null){
+          localforage.setItem('user', [exampleUser]);
+      }
+    });
   });
 })
 
